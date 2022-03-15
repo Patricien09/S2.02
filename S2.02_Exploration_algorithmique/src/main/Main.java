@@ -16,7 +16,7 @@ public class Main {
 	private final static String SLASH = "//";
 	
 	/**
-	 * Example:
+	 * Exemple:
 	 * (Sommet) (Voisins 1) (Voisins 2) (Voisins 3)
 	 * 1 2 3 4
 	 * 2 1 3
