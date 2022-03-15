@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_1_s9kKOpEeyVIOD3z4xUGA" name="SAE02_UML">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_2A7FkKOpEeyVIOD3z4xUGA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ScmcAKOqEeyVIOD3z4xUGA" name="Sommet">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cY67MKOqEeyVIOD3z4xUGA" name="nom" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xRFc4KOqEeyVIOD3z4xUGA" name="superficie" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_voni4KOtEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vopYEKOtEeyVIOD3z4xUGA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vosbYKOtEeyVIOD3z4xUGA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VFw50KOuEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA" association="_VFvrsKOuEeyVIOD3z4xUGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VFzWEKOuEeyVIOD3z4xUGA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VF1yUKOuEeyVIOD3z4xUGA" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_qrsdQKOqEeyVIOD3z4xUGA" name="getNom">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_i5jdAKOyEeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1uM2gKOsEeyVIOD3z4xUGA" name="getSuperficie">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_nvSc4KOyEeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-mMgAKOuEeyVIOD3z4xUGA" name="Sommet">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_O2sTAKOvEeyVIOD3z4xUGA" name="nom">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1CT5gKOvEeyVIOD3z4xUGA" name="voisin">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_XnsjsKOxEeyVIOD3z4xUGA" name="setNom"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ge84QKOxEeyVIOD3z4xUGA" name="setSuperficie"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Wx-nMKOyEeyVIOD3z4xUGA" name="toString">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tSQWMKOyEeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vVbgIKO4EeyVIOD3z4xUGA" name="degre">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_z3lcsKO4EeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5VtvwKOsEeyVIOD3z4xUGA" name="Graphe">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9b2esKOsEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA" aggregation="shared" association="_9b0CcKOsEeyVIOD3z4xUGA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9b9MYKOsEeyVIOD3z4xUGA" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_L6-ocqOyEeyVIOD3z4xUGA" type="_p3fxcKOwEeyVIOD3z4xUGA" aggregation="shared" association="_L6-BYKOyEeyVIOD3z4xUGA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L6_PgKOyEeyVIOD3z4xUGA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L6_PgaOyEeyVIOD3z4xUGA" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_r0kssKOxEeyVIOD3z4xUGA" name="algoWelshPowell"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_wxf5sKOxEeyVIOD3z4xUGA" name="Graphe">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_-2e3YKOxEeyVIOD3z4xUGA" name="listeSommets" type="_ScmcAKOqEeyVIOD3z4xUGA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_XWDIIKOzEeyVIOD3z4xUGA" name="listeCouleur">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9b0CcKOsEeyVIOD3z4xUGA" name="contient" visibility="protected" memberEnd="_9b2esKOsEeyVIOD3z4xUGA _9cA2wKOsEeyVIOD3z4xUGA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9b13oKOsEeyVIOD3z4xUGA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9b13oaOsEeyVIOD3z4xUGA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_9cA2wKOsEeyVIOD3z4xUGA" type="_5VtvwKOsEeyVIOD3z4xUGA" association="_9b0CcKOsEeyVIOD3z4xUGA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_VFvrsKOuEeyVIOD3z4xUGA" name="est connecté à" visibility="private" memberEnd="_VFw50KOuEeyVIOD3z4xUGA _VF41oKOuEeyVIOD3z4xUGA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VFwSwKOuEeyVIOD3z4xUGA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VFwSwaOuEeyVIOD3z4xUGA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_VF41oKOuEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA" association="_VFvrsKOuEeyVIOD3z4xUGA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_p3fxcKOwEeyVIOD3z4xUGA" name="Couleur">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_txLYwKOwEeyVIOD3z4xUGA" name="nom" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_IqNQsKOxEeyVIOD3z4xUGA" name="prix" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ROTYsKOxEeyVIOD3z4xUGA" name="getNom">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yhk6wKOyEeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TK1W0KOxEeyVIOD3z4xUGA" name="getPrix">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_2W0G8KOyEeyVIOD3z4xUGA" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UZPqsKOxEeyVIOD3z4xUGA" name="setNom"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VNqxQKOxEeyVIOD3z4xUGA" name="set Prix"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_L6-BYKOyEeyVIOD3z4xUGA" visibility="protected" memberEnd="_L6-ocqOyEeyVIOD3z4xUGA _L6_PgqOyEeyVIOD3z4xUGA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L6-ocKOyEeyVIOD3z4xUGA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L6-ocaOyEeyVIOD3z4xUGA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_L6_PgqOyEeyVIOD3z4xUGA" type="_5VtvwKOsEeyVIOD3z4xUGA" association="_L6-BYKOyEeyVIOD3z4xUGA"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Zq05EKOxEeyVIOD3z4xUGA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Zq2uQKOxEeyVIOD3z4xUGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_7hHMIKOzEeyVIOD3z4xUGA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7hIaQKOzEeyVIOD3z4xUGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+  </uml:Model>
+  <Codegen:GeneratorHint xmi:id="_7hMrsKOzEeyVIOD3z4xUGA" base_Element="_1_s9kKOpEeyVIOD3z4xUGA" generatorID="Standard Java">
+    <language xmi:type="Codegen:Language" href="pathmap://Codegen_PROFILES/languages.uml#_2Zt6YCjREeayco6FJ_OtTQ"/>
+  </Codegen:GeneratorHint>
+</xmi:XMI>
