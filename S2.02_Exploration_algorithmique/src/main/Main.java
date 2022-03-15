@@ -87,7 +87,7 @@ public class Main {
 		// 1 et 5 : Vert , 2 : Orange , 3 et 4 : Bleu
 		graphe.algoWelshPowell();
 		
-		
+		//just testing git commit on eclipse
 	}
 
 }
