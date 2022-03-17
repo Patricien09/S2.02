@@ -1,0 +1,16 @@
+
+bin/.project
+bin/S2.02_Exploration_algorithmique/.classpath
+bin/S2.02_Exploration_algorithmique/.project
+bin/S2.02_Exploration_algorithmique/.settings/org.eclipse.jdt.core.prefs
+bin/S2.02_Exploration_algorithmique/README.md
+bin/S2.02_Exploration_algorithmique/src/graphe/Couleur.class
+bin/S2.02_Exploration_algorithmique/src/graphe/Graphe.class
+bin/S2.02_Exploration_algorithmique/src/graphe/Sommet.class
+bin/S2.02_Exploration_algorithmique/src/main/Main.class
+bin/SAE02_UML/.project
+bin/SAE02_UML/SAE02_UML.di
+bin/SAE02_UML/SAE02_UML.notation
+bin/SAE02_UML/SAE02_UML.uml
+bin/SAE02_UML/SAE02_UML_en_US.properties
+bin/README.md
