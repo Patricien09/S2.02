@@ -94,9 +94,12 @@ public class Graphe {
 				continue; //sommet deja colorie
 			}else {
 				couleur_sommet.put(L.get(i), couleurs.get(i)); //On colorie le premier sommet non encore colorie
+				ArrayList<Sommet> succ = new ArrayList<>(); //Liste de tous les successeurs
+				succ.addAll(L.get(i).getVoisin());
 				for (int j = i+1; j < L.size(); j++){
-					if (!(L.get(i).getVoisin().contains(L.get(j))) && !(couleur_sommet.containsKey(L.get(j)))){
+					if (!(succ.contains(L.get(j))) && !(couleur_sommet.containsKey(L.get(j)))){
 						couleur_sommet.put(L.get(j), couleurs.get(i));
+						succ.addAll(L.get(j).getVoisin());
 					}
 					else{
 						continue;
