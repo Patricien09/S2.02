@@ -16,6 +16,8 @@ public class Sommet implements Comparable<Sommet>{
 	private double superficie;
 	/** Les voisins du sommet */
 	private ArrayList<Sommet> voisin = new ArrayList<>();
+	/** La couleur du sommet: valeur non assigne par defaut */
+	private Couleur couleur;
 	
 
 	/** Declare un sommet grace a un nom et une superficie 
@@ -79,7 +81,7 @@ public class Sommet implements Comparable<Sommet>{
 
 
 	/** Change la liste des voisins du sommet par celle passee en parametre
-	 * @param voisin the voisin to set
+	 * @param voisin La liste de voisin
 	 */
 	public void setVoisin(ArrayList<Sommet> voisin) {
 		this.voisin = voisin;
@@ -89,6 +91,20 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public int degre() {
 		return this.getVoisin().size();
+	}
+	/**
+	 * Renvoie la couleur du sommet
+	 * @return la couleur du sommet
+	 */
+	public Couleur getCouleur() {
+		return couleur;
+	}
+	/**
+	 * Change la couleur du sommet
+	 * @param couleur La couleur
+	 */
+	public void setCouleur(Couleur couleur) {
+		this.couleur = couleur;
 	}
 	
 	/** Ajoute un lien (arete) entre ce sommet et le sommet en parametre
@@ -102,7 +118,7 @@ public class Sommet implements Comparable<Sommet>{
 	/** Ajoute un lien (arete) entre ce sommet et chaque sommet de la liste en parametre
 	 * @param v la liste des tous les nouveaux voisins du sommet
 	 */
-	public void addLienVoisin(ArrayList<Sommet> v) { //Exception arete deja lï¿½ doit ï¿½tre traitï¿½
+	public void addLienVoisin(ArrayList<Sommet> v) { //Exception arete deja la doit ïetre traite
 		Iterator<Sommet> it = v.iterator();
 		while (it.hasNext()) {
 			addLienVoisin(it.next());		
@@ -142,4 +158,6 @@ public class Sommet implements Comparable<Sommet>{
 	public int compareTo(Sommet s) {
 		return this.degre() < s.degre() ? 1 : this.degre() == s.degre() ? 0 : -1;
 	}
+
+	
 }

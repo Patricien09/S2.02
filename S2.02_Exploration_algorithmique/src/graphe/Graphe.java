@@ -160,14 +160,21 @@ public class Graphe {
 			mapping.getValue().forEach((Sommet s) -> System.out.print(s.getNom() + " "));
 			System.out.println();
         }
-        /*
+        
+        // On attribue a chaque sommet une couleur optimale
+        System.out.println("\nCouleur attribué à chaque sommet:");
+        Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
         Iterator<Entry<Couleur, ArrayList<Sommet>>> it = entrySetSortedByValue.iterator();
         i = 0;
         while(it.hasNext() && i < couleurs.size()) {
-        	//it.next().getKey() = une couleur;   //Ceci ne marche pas parce que on ne peut pas changer une clé
+        	for (Sommet listSommet : it.next().getValue()) {
+        		listSommet.setCouleur(new Couleur(couleurs.get(i)));
+			}
         	i++;
         }
-        */
+        for (Sommet sommet : sommets) {
+			System.out.println(sommet.getNom() + " " + sommet.getCouleur().getNom());
+		}
 	}
 
 }

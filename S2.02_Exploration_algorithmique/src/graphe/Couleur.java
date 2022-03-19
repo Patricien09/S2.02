@@ -19,6 +19,14 @@ public class Couleur implements Comparable<Couleur>{
 		this.nom = nom;
 		this.prix = prix;
 	}
+	/**
+	 * Constructeur par recopie
+	 * @param couleur L'objet couleur a copier 
+	 * @param prix
+	 */
+	public Couleur(Couleur couleur) {
+		this(couleur.getNom(),couleur.getPrix());
+	}
 
 	/** Renvoie le nom de la couleur
 	 * @return le nom
@@ -64,10 +72,6 @@ public class Couleur implements Comparable<Couleur>{
 	 */
 	@Override
 	public int compareTo(Couleur c) {
-		if(this.getPrix() > c.getPrix())
-			return 1;
-		if(this.getPrix() < c.getPrix())
-			return -1;
-		return 0;
+		return this.getPrix() > c.getPrix() ? 1 : this.getPrix() < c.getPrix() ? -1 : 0;
 	}
 }
