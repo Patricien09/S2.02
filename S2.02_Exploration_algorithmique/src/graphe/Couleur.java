@@ -47,7 +47,8 @@ public class Couleur implements Comparable<Couleur>{
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-
+	
+	
 	/** Convertit la couleur en chaine de caractere
 	 * C'est-a-dire son nom puis son prix en euros pour une unite de superficie
 	 */

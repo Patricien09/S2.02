@@ -4,7 +4,13 @@ package graphe;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Definition d'un graphe
@@ -82,46 +88,30 @@ public class Graphe {
 
 	/** Associe a chaque sommet une couleur */
 	public void algoWelshPowell() {
+		//------------ Partie marche bien
 		Graphe graphe = new Graphe(this); //copie graphe avant trie
 		Collections.sort(this.getSommets()); //trie les sommets selon l'ordre decroissant du degre
 		Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
-		ArrayList<Sommet> L = graphe.getSommets();
-
-
-		HashMap<Sommet, Couleur> couleur_sommet = new HashMap<Sommet, Couleur>(); //le nom du sommet comme cle et Couleur la valeur
-		for (int i = 0; i < L.size(); i++) {
-			if (couleur_sommet.containsKey(L.get(i))) {
-				continue; //sommet deja colorie
-			}else {
-				couleur_sommet.put(L.get(i), couleurs.get(i)); //On colorie le premier sommet non encore colorie
-				ArrayList<Sommet> succ = new ArrayList<>(); //Liste de tous les successeurs
-				succ.addAll(L.get(i).getVoisin());
-				for (int j = i+1; j < L.size(); j++){
-					if (!(succ.contains(L.get(j))) && !(couleur_sommet.containsKey(L.get(j)))){
-						couleur_sommet.put(L.get(j), couleurs.get(i));
-						succ.addAll(L.get(j).getVoisin());
-					}
-					else{
-						continue;
-					}
+		ArrayList<Sommet> listeSommetNonTraite = new ArrayList<>(graphe.getSommets());
+		HashMap<Couleur, ArrayList<Sommet>> hashMapCouleurSommets = new HashMap<>();
+		
+		int i = 0;
+		while (!listeSommetNonTraite.isEmpty()) {
+			ArrayList<Sommet> listeSommetColorie = new ArrayList<>();
+			ArrayList<Sommet> succ = new ArrayList<>(listeSommetNonTraite.get(0).getVoisin()); //Liste de tous les successeurs du premier sommet non traité
+			for (Sommet s: listeSommetNonTraite) {
+				if(!succ.contains(s)) {
+					listeSommetColorie.add(s);
+					succ.addAll(s.getVoisin()); // ensemble succ Union ensemble des successeurs du sommet traité
+					hashMapCouleurSommets.put(couleurs.get(i), listeSommetColorie);
 				}
 			}
+			listeSommetNonTraite.removeAll(listeSommetColorie); // on enlève tous les sommets portant une couleur de la liste des sommets à traiter
+			i++;
 		}
-		//System.out.println(couleur_sommet);
 		
-		//On regroupe les sommets qui ont les memes couleurs pour enfin leur attribuer une couleur optimale
-		HashMap<Couleur, ArrayList<Sommet>> reverseMap = new HashMap<>();
-
-		for (HashMap.Entry<Sommet,Couleur> entry : couleur_sommet.entrySet()) {
-		    if (!reverseMap.containsKey(entry.getValue())) {
-		        reverseMap.put(entry.getValue(), new ArrayList<>());
-		    }
-		    ArrayList<Sommet> keys = reverseMap.get(entry.getValue());
-		    keys.add(entry.getKey());
-		    reverseMap.put(entry.getValue(), keys);
-		}
-		//System.out.println(reverseMap);
-		for (HashMap.Entry<Couleur, ArrayList<Sommet>> entry : reverseMap.entrySet()) {
+		System.out.println("hashMapCouleurSommets:");
+		for (HashMap.Entry<Couleur, ArrayList<Sommet>> entry : hashMapCouleurSommets.entrySet()) {
 			Couleur key = entry.getKey();
 			ArrayList<Sommet> val = entry.getValue();
 			System.out.print("Couleur: " + key.getNom() + " - Prix: "+ key.getPrix() + " euros - Sommet: ");
@@ -131,9 +121,53 @@ public class Graphe {
 				sommeSuperficie += s.getSuperficie();
 			System.out.println("- Superficie Total: " + sommeSuperficie);
 		}
-		//ï¿½ finir .... attribuer une couleur optimale ï¿½ un sommet
-		//ligne 85, j'ai trie couleur par ordre decroissant du prix, je ne sais pas si ï¿½a marche ou pas encore
 		
+		
+		//à finir .... attribuer une couleur optimale à un sommet
+		Set<Entry<Couleur, ArrayList<Sommet>>> entries = hashMapCouleurSommets.entrySet();
+		List<Entry<Couleur, ArrayList<Sommet>>> listOfEntries = new ArrayList<>(entries);
+		//Lambda expression à tester
+		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() { //Comparotor anonyme
+            @Override
+            public int compare(Entry<Couleur, ArrayList<Sommet>> e1, Entry<Couleur, ArrayList<Sommet>> e2) {
+                ArrayList<Sommet> v1 = e1.getValue();
+                ArrayList<Sommet> v2 = e2.getValue();
+				Double sommeV1 = 0.;
+				for(Sommet d : v1){
+					sommeV1 += d.getSuperficie();
+				}
+				Double sommeV2 = 0.;
+				for(Sommet d : v2){
+					sommeV2 += d.getSuperficie();
+				}
+                return sommeV1.compareTo(sommeV2);
+            }
+        };
+
+		Collections.sort(listOfEntries, superficieComparator.reversed());
+		LinkedHashMap<Couleur, ArrayList<Sommet>> sortedByValue = new LinkedHashMap<>(listOfEntries.size());
+        
+        // copying entries from List to Map
+        for(Entry<Couleur, ArrayList<Sommet>> entry : listOfEntries){
+            sortedByValue.put(entry.getKey(), entry.getValue());
+        }
+        
+        System.out.println("\nHashMap apres trie par superfice");
+        Set<Entry<Couleur, ArrayList<Sommet>>> entrySetSortedByValue = sortedByValue.entrySet();
+        // Print to console
+        for(Entry<Couleur, ArrayList<Sommet>> mapping : entrySetSortedByValue){
+            System.out.print(mapping.getKey().getNom() + " ==> ");
+			mapping.getValue().forEach((Sommet s) -> System.out.print(s.getNom() + " "));
+			System.out.println();
+        }
+        /*
+        Iterator<Entry<Couleur, ArrayList<Sommet>>> it = entrySetSortedByValue.iterator();
+        i = 0;
+        while(it.hasNext() && i < couleurs.size()) {
+        	//it.next().getKey() = une couleur;   //Ceci ne marche pas parce que on ne peut pas changer une clé
+        	i++;
+        }
+        */
 	}
 
 }

@@ -7,10 +7,7 @@ import java.util.Collections;
 
 import graphe.*;
 
-/**
- * 
- * @author Yifru Abenezer
- */
+
 public class Main {
 	private final static String TIRET = " -------------------------------------- ";
 	private final static String SLASH = "//";

@@ -11,10 +11,7 @@ import java.util.Collections;
 
 import graphe.*;
 
-/**
- * 
- * @author Yifru Abenezer
- */
+
 public class Mainv2 {
 	private final static String TIRET = " -------------------------------------- ";
 	private final static String SLASH = "//";
