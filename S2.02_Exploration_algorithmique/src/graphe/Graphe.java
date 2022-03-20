@@ -85,12 +85,12 @@ public class Graphe {
 		}
 		return sommetString;
 	}
-
+	
 	/** Associe a chaque sommet une couleur */
 	public void algoWelshPowell() {
 		//------------ Partie marche bien
 		Graphe graphe = new Graphe(this); //copie graphe avant trie
-		Collections.sort(this.getSommets()); //trie les sommets selon l'ordre decroissant du degre
+		Collections.sort(graphe.getSommets()); //trie les sommets selon l'ordre decroissant du degre
 		Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
 		ArrayList<Sommet> listeSommetNonTraite = new ArrayList<>(graphe.getSommets());
 		HashMap<Couleur, ArrayList<Sommet>> hashMapCouleurSommets = new HashMap<>();
@@ -101,8 +101,13 @@ public class Graphe {
 			ArrayList<Sommet> succ = new ArrayList<>(listeSommetNonTraite.get(0).getVoisin()); //Liste de tous les successeurs du premier sommet non traité
 			for (Sommet s: listeSommetNonTraite) {
 				if(!succ.contains(s)) {
+					if (i >= couleurs.size()) {
+						System.out.println("Pas assez de couleurs différents pour colorier tous les sommets");
+						return;
+					}
 					listeSommetColorie.add(s);
 					succ.addAll(s.getVoisin()); // ensemble succ Union ensemble des successeurs du sommet traité
+					s.setCouleur(new Couleur(couleurs.get(i))); //On colorie le sommet
 					hashMapCouleurSommets.put(couleurs.get(i), listeSommetColorie);
 				}
 			}
@@ -125,7 +130,7 @@ public class Graphe {
 		
 		//à finir .... attribuer une couleur optimale à un sommet
 		Set<Entry<Couleur, ArrayList<Sommet>>> entries = hashMapCouleurSommets.entrySet();
-		List<Entry<Couleur, ArrayList<Sommet>>> listOfEntries = new ArrayList<>(entries);
+		List<Entry<Couleur, ArrayList<Sommet>>> listOfEntries = new ArrayList<>(entries); 
 		//Lambda expression à tester
 		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() { //Comparotor anonyme
             @Override
@@ -134,11 +139,11 @@ public class Graphe {
                 ArrayList<Sommet> v2 = e2.getValue();
 				Double sommeV1 = 0.;
 				for(Sommet d : v1){
-					sommeV1 += d.getSuperficie();
+					sommeV1 += (Double) d.getSuperficie();
 				}
 				Double sommeV2 = 0.;
 				for(Sommet d : v2){
-					sommeV2 += d.getSuperficie();
+					sommeV2 += (Double) d.getSuperficie();
 				}
                 return sommeV1.compareTo(sommeV2);
             }
@@ -146,7 +151,7 @@ public class Graphe {
 
 		Collections.sort(listOfEntries, superficieComparator.reversed());
 		LinkedHashMap<Couleur, ArrayList<Sommet>> sortedByValue = new LinkedHashMap<>(listOfEntries.size());
-        
+		
         // copying entries from List to Map
         for(Entry<Couleur, ArrayList<Sommet>> entry : listOfEntries){
             sortedByValue.put(entry.getKey(), entry.getValue());
@@ -172,9 +177,9 @@ public class Graphe {
 			}
         	i++;
         }
+        Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));;
         for (Sommet sommet : sommets) {
 			System.out.println(sommet.getNom() + " " + sommet.getCouleur().getNom());
 		}
 	}
-
 }

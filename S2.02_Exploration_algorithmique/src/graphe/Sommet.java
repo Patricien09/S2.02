@@ -13,7 +13,7 @@ public class Sommet implements Comparable<Sommet>{
 	/** Un sommet, caracterise par une chaine de caractere	 */
 	private String nom;
 	/** La superficie du sommet	 */
-	private double superficie;
+	private Double superficie;
 	/** Les voisins du sommet */
 	private ArrayList<Sommet> voisin = new ArrayList<>();
 	/** La couleur du sommet: valeur non assigne par defaut */
@@ -26,7 +26,7 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public Sommet(String nom, double superficie) {
 		this.nom = nom;
-		this.superficie = superficie;
+		this.superficie = (Double) superficie;
 	}
 
 	/** Declare un Sommet grace a un nom, une superficie et une liste de voisin
@@ -35,7 +35,7 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param voisin la liste des voisins
 	 */
 	protected Sommet(String nom, double superficie, ArrayList<Sommet> voisin) {
-		this(nom, superficie);
+		this(nom, (Double) superficie);
 		this.voisin = voisin;
 	}
 
@@ -59,7 +59,7 @@ public class Sommet implements Comparable<Sommet>{
 	/** Renvoie la superficie du sommet
 	 * @return la superficie
 	 */
-	public double getSuperficie() {
+	public Double getSuperficie() {
 		return superficie;
 	}
 
@@ -68,7 +68,7 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param superficie la nouvelle superficie
 	 */
 	public void setSuperficie(double superficie) {
-		this.superficie = superficie;
+		this.superficie = (Double) superficie;
 	}
 
 
@@ -111,8 +111,12 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param v le nouveau voisin du sommet
 	 */
 	public void addLienVoisin(Sommet v) { //Exception arete deja l� doit �tre trait�
-		this.voisin.add(v);
-		v.getVoisin().add(this);
+		if(!this.voisin.contains(v)) {
+			this.voisin.add(v);			
+		}
+		if (!v.getVoisin().contains(v)) {
+			v.getVoisin().add(this);
+		}
 	}
 	
 	/** Ajoute un lien (arete) entre ce sommet et chaque sommet de la liste en parametre
@@ -156,7 +160,7 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	@Override
 	public int compareTo(Sommet s) {
-		return this.degre() < s.degre() ? 1 : this.degre() == s.degre() ? 0 : -1;
+		return this.degre() < s.degre() ? 1 : this.degre() == s.degre() ? this.superficie.compareTo(s.getSuperficie()) : -1;
 	}
 
 	

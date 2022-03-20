@@ -62,7 +62,7 @@ public class Couleur implements Comparable<Couleur>{
 	 */
 	@Override
 	public String toString() {
-		return "Couleur [ " + getNom() + ", Prix= " + getPrix() + "euros]";
+		return "Couleur [ " + getNom() + ", Prix= " + getPrix() + " euros]";
 	}
 
 	/** Compare deux couleurs en fonction de leur prix par unite de superficie
