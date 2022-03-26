@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * Definition d'une couleur
  */
-public class Couleur implements Comparable<Couleur>, Comparator<Couleur>{
+public class Couleur implements Comparable<Couleur>{
 	/** Nom de la couleur */
 	private String nom;
 	/** Le prix de la couleur */
@@ -86,9 +86,5 @@ public class Couleur implements Comparable<Couleur>, Comparator<Couleur>{
 	@Override
 	public int compareTo(Couleur c) {
 		return this.getPrix() > c.getPrix() ? 1 : this.getPrix() < c.getPrix() ? -1 : 0;
-	}
-	@Override
-	public int compare(Couleur o1, Couleur o2) {
-		return o1.getNom().compareTo(o2.getNom());
 	}
 }
