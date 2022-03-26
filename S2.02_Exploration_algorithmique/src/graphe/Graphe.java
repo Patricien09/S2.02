@@ -7,10 +7,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * Definition d'un graphe
@@ -131,23 +129,23 @@ public class Graphe {
 			i++;
 		}
 		
+		/*//Pour visualiser notre HashMap
 		System.out.println("hashMapCouleurSommets:");
 		for (HashMap.Entry<Couleur, ArrayList<Sommet>> entry : hashMapCouleurSommets.entrySet()) {
 			Couleur key = entry.getKey();
 			ArrayList<Sommet> val = entry.getValue();
 			System.out.print("Couleur: " + key.getNom() + " - Prix: "+ key.getPrix() + " euros - Sommet: ");
 			val.forEach(e -> System.out.print(e.getNom() + " "));
-			double sommeSuperficie = 0;
+			Double sommeSuperficie = 0.;
 			for(Sommet s : val)
 				sommeSuperficie += s.getSuperficie();
 			System.out.println("- Superficie Total: " + sommeSuperficie);
-		}
+		}*/
 		
 		//Dans cette partie, on va attribuer une couleur optimale par superficie totale
-		
-		//On convertit le hashmap en Set pour pouvoir les trier
-		Set<Entry<Couleur, ArrayList<Sommet>>> entries = hashMapCouleurSommets.entrySet();
-		List<Entry<Couleur, ArrayList<Sommet>>> listOfEntries = new ArrayList<>(entries); 
+		//Tout d'abord, on convertit le hashmap en Liste pour pouvoir les trier
+		//On regroupe d'abord chaque <K,V> dans un set, puis on les ajoute dans une Liste
+		List<Entry<Couleur, ArrayList<Sommet>>> listeDesEntrees = new ArrayList<>(hashMapCouleurSommets.entrySet()); 
 		//Comparator anonyme pour comparé la superficie totale par couleur attribué
 		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() {  
             @Override
@@ -165,28 +163,12 @@ public class Graphe {
                 return sommeV1.compareTo(sommeV2);
             }
         };
-
-		Collections.sort(listOfEntries, superficieComparator.reversed());
-		LinkedHashMap<Couleur, ArrayList<Sommet>> sortedByValue = new LinkedHashMap<>(listOfEntries.size());
-		
-        // copying entries from List to Map
-        for(Entry<Couleur, ArrayList<Sommet>> entry : listOfEntries){
-            sortedByValue.put(entry.getKey(), entry.getValue());
-        }
-        
-        System.out.println("\nHashMap apres trie par superfice");
-        Set<Entry<Couleur, ArrayList<Sommet>>> entrySetSortedByValue = sortedByValue.entrySet();
-        // Print to console
-        for(Entry<Couleur, ArrayList<Sommet>> mapping : entrySetSortedByValue){
-            System.out.print(mapping.getKey().getNom() + " ==> ");
-			mapping.getValue().forEach((Sommet s) -> System.out.print(s.getNom() + " "));
-			System.out.println();
-        }
-        
-        // On attribue a chaque sommet une couleur optimale
+        //On trie la liste selon la superficie totale par couleur attribué
+		Collections.sort(listeDesEntrees, superficieComparator.reversed());
+        // On attribue a chaque sommet une couleur optimale, c'est-à-dire du plus petit prix au plus grand
         System.out.println("\nCouleur attribué à chaque sommet:");
         Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
-        Iterator<Entry<Couleur, ArrayList<Sommet>>> it = entrySetSortedByValue.iterator();
+        Iterator<Entry<Couleur, ArrayList<Sommet>>> it = listeDesEntrees.iterator();
         i = 0;
         while(it.hasNext() && i < couleurs.size()) {
         	for (Sommet listSommet : it.next().getValue()) {
@@ -194,9 +176,11 @@ public class Graphe {
 			}
         	i++;
         }
-        Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));;
+        //Pour visualiser le résultat
+        Collections.sort(sommets, (s1,s2)-> s1.getNom().compareTo(s2.getNom()));
+        //Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));
         for (Sommet sommet : sommets) {
-			System.out.println(sommet.getNom() + " " + sommet.getCouleur().getNom());
+			System.out.println(sommet.getNom() + " - " + sommet.getCouleur().getNom() + " - " + sommet.getSuperficie() + " - "+ sommet.getCouleur().getPrix()+ " euros");
 		}        
 	}
 }

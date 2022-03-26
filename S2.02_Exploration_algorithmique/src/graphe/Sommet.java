@@ -25,7 +25,7 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param superficie la superficie
 	 */
 	public Sommet(String nom, double superficie) throws IllegalArgumentException {
-		if(nom == null && !nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) { 
 			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
 		}
 		if (superficie < 0) {
@@ -58,7 +58,7 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param nom le nouveau nom
 	 */
 	public void setNom(String nom) {
-		if(nom != null && !nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) { 
 			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
 		}
 		this.nom = nom;

@@ -2,10 +2,12 @@
 
 package graphe;
 
+import java.util.Comparator;
+
 /**
  * Definition d'une couleur
  */
-public class Couleur implements Comparable<Couleur>{
+public class Couleur implements Comparable<Couleur>, Comparator<Couleur>{
 	/** Nom de la couleur */
 	private String nom;
 	/** Le prix de la couleur */
@@ -16,7 +18,7 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param prix Le prix de la couleur
 	 */
 	public Couleur(String nom, double prix) {
-		if(nom == null && !nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) { 
 			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
 		}
 		if (prix < 0) {
@@ -44,7 +46,7 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param nom le nouveau nom
 	 */
 	public void setNom(String nom) {
-		if(nom == null && !nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) { 
 			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
 		}
 		this.nom = nom;
@@ -84,5 +86,9 @@ public class Couleur implements Comparable<Couleur>{
 	@Override
 	public int compareTo(Couleur c) {
 		return this.getPrix() > c.getPrix() ? 1 : this.getPrix() < c.getPrix() ? -1 : 0;
+	}
+	@Override
+	public int compare(Couleur o1, Couleur o2) {
+		return o1.getNom().compareTo(o2.getNom());
 	}
 }

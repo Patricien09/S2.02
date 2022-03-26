@@ -81,10 +81,10 @@ public class Main {
 		Collections.sort(sommets);
 		System.out.println(graphe);
 		
-		// 1 et 5 : Vert , 2 : Orange , 3 et 4 : Bleu
+		//---------------------------------- Coloration ---------------------------------//
+		System.out.println(SLASH+TIRET+"Coloration"+TIRET+SLASH);
 		graphe.algoWelshPowell();
 		
-		//just testing git commit on eclipse
 	}
 
 }
