@@ -21,25 +21,35 @@ public class Graphe {
 	 */
 	private ArrayList<Sommet> sommets;
 	/**
-	 * Liste de couleurs
+	 * Liste des couleurs
 	 */
 	private ArrayList<Couleur> couleurs;
 	
-	/** Declare un graphe grace a une liste de sommet et un liste de couleur
-	 * @param sommets liste des sommets
-	 * @param couleurs liste des couleurs
+	/** Declare un graphe grace a une liste de sommet et une liste de couleur
+	 * @param sommets Liste des sommets
+	 * @param couleurs Liste des couleurs
 	 */
 	public Graphe(ArrayList<Sommet> sommets, ArrayList<Couleur> couleurs) {
 		this.sommets = sommets;
 		this.couleurs = couleurs;
 	}
 
-	/** Declare un graphe
-	 * Recopie du graphe passe en parametre
+	/**
+	 * Constructeur par copie du graphe passe en parametre
 	 * @param graphe Le graphe a copier
 	 */
 	public Graphe(Graphe graphe) {
 		this(graphe.getSommets(), graphe.getCouleurs());
+	}
+	/**
+	 * Verifie si le graphe est vide ou non
+	 * @return boolean Renvoie vrai si graohe vide, faux sinon
+	 */
+	public boolean isEmpty() {
+		if (this.getSommets() == null) {
+			return true;
+		}
+		return false;
 	}
 	
 	/** Renvoie la liste des sommets
@@ -75,6 +85,9 @@ public class Graphe {
 	 */
 	@Override
 	public String toString() {
+		if(this.isEmpty()) {
+			return "Le graphe est vide. Aucun sommets!";
+		}
 		String sommetString = "";
 		for (Sommet s: sommets){
 			String voisinString = " ";
@@ -88,13 +101,16 @@ public class Graphe {
 	
 	/** Associe a chaque sommet une couleur */
 	public void algoWelshPowell() {
-		//------------ Partie marche bien
+		//Si graphe vide, on fait rien
+		if(this.isEmpty()) return;
 		Graphe graphe = new Graphe(this); //copie graphe avant trie
 		Collections.sort(graphe.getSommets()); //trie les sommets selon l'ordre decroissant du degre
 		Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
 		ArrayList<Sommet> listeSommetNonTraite = new ArrayList<>(graphe.getSommets());
 		HashMap<Couleur, ArrayList<Sommet>> hashMapCouleurSommets = new HashMap<>();
 		
+		//Algo de WP, on veut juste attribuer des couleurs à des sommets - Nombre chromatique minimal 
+		//on ne se contente pas du prix des couleurs
 		int i = 0;
 		while (!listeSommetNonTraite.isEmpty()) {
 			ArrayList<Sommet> listeSommetColorie = new ArrayList<>();
@@ -127,12 +143,13 @@ public class Graphe {
 			System.out.println("- Superficie Total: " + sommeSuperficie);
 		}
 		
+		//Dans cette partie, on va attribuer une couleur optimale par superficie totale
 		
-		//à finir .... attribuer une couleur optimale à un sommet
+		//On convertit le hashmap en Set pour pouvoir les trier
 		Set<Entry<Couleur, ArrayList<Sommet>>> entries = hashMapCouleurSommets.entrySet();
 		List<Entry<Couleur, ArrayList<Sommet>>> listOfEntries = new ArrayList<>(entries); 
-		//Lambda expression à tester
-		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() { //Comparotor anonyme
+		//Comparator anonyme pour comparé la superficie totale par couleur attribué
+		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() {  
             @Override
             public int compare(Entry<Couleur, ArrayList<Sommet>> e1, Entry<Couleur, ArrayList<Sommet>> e2) {
                 ArrayList<Sommet> v1 = e1.getValue();
@@ -180,6 +197,6 @@ public class Graphe {
         Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));;
         for (Sommet sommet : sommets) {
 			System.out.println(sommet.getNom() + " " + sommet.getCouleur().getNom());
-		}
+		}        
 	}
 }

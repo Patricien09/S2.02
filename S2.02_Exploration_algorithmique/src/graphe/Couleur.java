@@ -3,12 +3,12 @@
 package graphe;
 
 /**
- * Definition d'un couleur
+ * Definition d'une couleur
  */
 public class Couleur implements Comparable<Couleur>{
-	/** Nom du couleur */
+	/** Nom de la couleur */
 	private String nom;
-	/** Le prix du couleur */
+	/** Le prix de la couleur */
 	private double prix;
 	
 	/** Declare une couleur grace a son nom et a son prix
@@ -16,13 +16,18 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param prix Le prix de la couleur
 	 */
 	public Couleur(String nom, double prix) {
+		if(nom == null && !nom.trim().isEmpty()) { 
+			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
+		}
+		if (prix < 0) {
+			throw new IllegalArgumentException("Le prix de la couleur ne peut pas être négative");
+		}
 		this.nom = nom;
 		this.prix = prix;
 	}
 	/**
 	 * Constructeur par recopie
-	 * @param couleur L'objet couleur a copier 
-	 * @param prix
+	 * @param couleur L'objet couleur a copier
 	 */
 	public Couleur(Couleur couleur) {
 		this(couleur.getNom(),couleur.getPrix());
@@ -39,6 +44,9 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param nom le nouveau nom
 	 */
 	public void setNom(String nom) {
+		if(nom == null && !nom.trim().isEmpty()) { 
+			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
+		}
 		this.nom = nom;
 	}
 
@@ -53,6 +61,9 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param prix le nouveau prix
 	 */
 	public void setPrix(double prix) {
+		if (prix < 0) {
+			throw new IllegalArgumentException("Le prix de la couleur ne peut pas être négative");
+		}
 		this.prix = prix;
 	}
 	

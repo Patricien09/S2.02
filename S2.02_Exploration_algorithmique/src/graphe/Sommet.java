@@ -24,15 +24,21 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param nom le nom
 	 * @param superficie la superficie
 	 */
-	public Sommet(String nom, double superficie) {
+	public Sommet(String nom, double superficie) throws IllegalArgumentException {
+		if(nom == null && !nom.trim().isEmpty()) { 
+			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
+		}
+		if (superficie < 0) {
+			throw new IllegalArgumentException("La superficie ne peut pas être négative");
+		}
 		this.nom = nom;
 		this.superficie = (Double) superficie;
 	}
 
 	/** Declare un Sommet grace a un nom, une superficie et une liste de voisin
-	 * @param nom le nom
-	 * @param superfie la superficie
-	 * @param voisin la liste des voisins
+	 * @param nom Le nom du sommet
+	 * @param superficie La superficie du sommet
+	 * @param voisin La liste des voisins
 	 */
 	protected Sommet(String nom, double superficie, ArrayList<Sommet> voisin) {
 		this(nom, (Double) superficie);
@@ -52,6 +58,9 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param nom le nouveau nom
 	 */
 	public void setNom(String nom) {
+		if(nom != null && !nom.trim().isEmpty()) { 
+			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
+		}
 		this.nom = nom;
 	}
 
@@ -68,9 +77,11 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param superficie la nouvelle superficie
 	 */
 	public void setSuperficie(double superficie) {
+		if (superficie < 0) {
+			throw new IllegalArgumentException("La superficie ne peut pas être négative");
+		}
 		this.superficie = (Double) superficie;
 	}
-
 
 	/** Renvoie la liste des voisins du sommet
 	 * @return la liste des voisins
@@ -84,8 +95,12 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param voisin La liste de voisin
 	 */
 	public void setVoisin(ArrayList<Sommet> voisin) {
+		if (voisin == null) {
+			return;
+		}
 		this.voisin = voisin;
 	}
+	
 	/** Renvoie le degre du sommet
 	 * @return le degre du sommet
 	 */
@@ -104,13 +119,17 @@ public class Sommet implements Comparable<Sommet>{
 	 * @param couleur La couleur
 	 */
 	public void setCouleur(Couleur couleur) {
+		if (couleur == null) {
+			throw new IllegalArgumentException("La couleur ne peut pas être null");
+		}
 		this.couleur = couleur;
 	}
 	
 	/** Ajoute un lien (arete) entre ce sommet et le sommet en parametre
 	 * @param v le nouveau voisin du sommet
 	 */
-	public void addLienVoisin(Sommet v) { //Exception arete deja lï¿½ doit ï¿½tre traitï¿½
+	public void addLienVoisin(Sommet v) {
+		if(v == null) return;
 		if(!this.voisin.contains(v)) {
 			this.voisin.add(v);			
 		}
@@ -122,7 +141,7 @@ public class Sommet implements Comparable<Sommet>{
 	/** Ajoute un lien (arete) entre ce sommet et chaque sommet de la liste en parametre
 	 * @param v la liste des tous les nouveaux voisins du sommet
 	 */
-	public void addLienVoisin(ArrayList<Sommet> v) { //Exception arete deja la doit ïetre traite
+	public void addLienVoisin(ArrayList<Sommet> v) {
 		Iterator<Sommet> it = v.iterator();
 		while (it.hasNext()) {
 			addLienVoisin(it.next());		
@@ -130,7 +149,7 @@ public class Sommet implements Comparable<Sommet>{
 	}
 
 	/** Convertit le sommet en chaine de caractere 
-	 * C'est-a-dire d'abord son nom + sa superficie + ses voisins
+	 * au format Sommet [ nom, superficie, voisins]
 	 */
 	@Override
 	public String toString() {
@@ -139,8 +158,7 @@ public class Sommet implements Comparable<Sommet>{
 		while(it.hasNext()) {
 			voisins = voisins + " " + it.next().getNom();
 		}
-		return "Sommet [" + getNom() + ", Superficie=" + getSuperficie() + ", Voisins=" + voisins
-				+ "]";
+		return "Sommet [ " + getNom() + ", " + getSuperficie() + "," + voisins + "]";
 	}
 
 	/** Teste l'egalite entre ce sommet et un autre objet
@@ -155,8 +173,10 @@ public class Sommet implements Comparable<Sommet>{
 
 	/** Compare deux sommets en fonction de leur degre
 	 * Renvoie 1 si le degre du sommet s est superieur au degre de ce sommet
-	 * Renvoie -1 si le degre de s est infÃ©rieur
-	 * Renvoie 0 si les degres sont les memes 
+	 * Renvoie -1 si le degre de s est inferieur
+	 * Si y a egalite de degre, on compare leur superficie
+	 * Remarque: Ceci fait l'inverse du standard compareTo
+	 * @param s Le sommet a comparer 
 	 */
 	@Override
 	public int compareTo(Sommet s) {

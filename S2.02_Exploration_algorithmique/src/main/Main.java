@@ -24,7 +24,7 @@ public class Main {
 	public static void main(String[] args) {
 		//---------------------------------- Les Sommets ---------------------------------//
 		Sommet s1 = new Sommet("1", 1);
-		Sommet s2 = new Sommet("2", 5);
+		Sommet s2 = new Sommet("2", 80);
 		Sommet s3 = new Sommet("3", 7);
 		Sommet s4 = new Sommet("4", 9);
 		Sommet s5 = new Sommet("5", 20);
