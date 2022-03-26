@@ -19,6 +19,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VFzWEKOuEeyVIOD3z4xUGA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VF1yUKOuEeyVIOD3z4xUGA" value="*"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_diE5QK06Eey6DLh-IKCPPg" type="_p3fxcKOwEeyVIOD3z4xUGA" aggregation="shared" association="_dh_ZsK06Eey6DLh-IKCPPg"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_qrsdQKOqEeyVIOD3z4xUGA" name="getNom">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_i5jdAKOyEeyVIOD3z4xUGA" direction="out">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -54,9 +55,8 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_9b2esKOsEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA" aggregation="shared" association="_9b0CcKOsEeyVIOD3z4xUGA">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9b9MYKOsEeyVIOD3z4xUGA" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_L6-ocqOyEeyVIOD3z4xUGA" type="_p3fxcKOwEeyVIOD3z4xUGA" aggregation="shared" association="_L6-BYKOyEeyVIOD3z4xUGA">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_L6_PgKOyEeyVIOD3z4xUGA"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_L6_PgaOyEeyVIOD3z4xUGA" value="*"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0SMbEa06Eey6DLh-IKCPPg" type="_p3fxcKOwEeyVIOD3z4xUGA" association="_0SKl4K06Eey6DLh-IKCPPg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0SNpMa06Eey6DLh-IKCPPg" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_r0kssKOxEeyVIOD3z4xUGA" name="algoWelshPowell"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_wxf5sKOxEeyVIOD3z4xUGA" name="Graphe">
@@ -98,11 +98,17 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_UZPqsKOxEeyVIOD3z4xUGA" name="setNom"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_VNqxQKOxEeyVIOD3z4xUGA" name="set Prix"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_L6-BYKOyEeyVIOD3z4xUGA" visibility="protected" memberEnd="_L6-ocqOyEeyVIOD3z4xUGA _L6_PgqOyEeyVIOD3z4xUGA">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_L6-ocKOyEeyVIOD3z4xUGA" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_L6-ocaOyEeyVIOD3z4xUGA" key="nature" value="UML_Nature"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_dh_ZsK06Eey6DLh-IKCPPg" memberEnd="_diE5QK06Eey6DLh-IKCPPg _diGucK06Eey6DLh-IKCPPg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_diDEEK06Eey6DLh-IKCPPg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_diDrIK06Eey6DLh-IKCPPg" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_L6_PgqOyEeyVIOD3z4xUGA" type="_5VtvwKOsEeyVIOD3z4xUGA" association="_L6-BYKOyEeyVIOD3z4xUGA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_diGucK06Eey6DLh-IKCPPg" type="_ScmcAKOqEeyVIOD3z4xUGA" association="_dh_ZsK06Eey6DLh-IKCPPg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0SKl4K06Eey6DLh-IKCPPg" memberEnd="_0SMbEa06Eey6DLh-IKCPPg _0SOQQK06Eey6DLh-IKCPPg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0SL0AK06Eey6DLh-IKCPPg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0SMbEK06Eey6DLh-IKCPPg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0SOQQK06Eey6DLh-IKCPPg" type="_5VtvwKOsEeyVIOD3z4xUGA" association="_0SKl4K06Eey6DLh-IKCPPg"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Zq05EKOxEeyVIOD3z4xUGA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Zq2uQKOxEeyVIOD3z4xUGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
