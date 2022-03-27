@@ -2,8 +2,6 @@
 
 package graphe;
 
-import java.util.Comparator;
-
 /**
  * Definition d'une couleur
  */
