@@ -184,13 +184,13 @@ public class Graphe {
 		Couleur tmp = sommets.get(0).getCouleur();
 		for (Sommet sommet : sommets) {
 			if (!(sommet.getCouleur().equals(tmp))){
-				System.out.println(tmp + " - Superficie totale : " + tot);
+				System.out.println("\n" + tmp + " - Superficie totale : " + tot + "\n");
 				tot = 0.;
 				tmp = sommet.getCouleur();
 			}
 			System.out.println(sommet.getNom() + " - " + sommet.getCouleur().getNom() + " - " + sommet.getSuperficie() + " - "+ sommet.getCouleur().getPrix()+ " euros");
 			tot += sommet.getSuperficie();
 		}
-		System.out.println(tmp + " - Superficie totale : " + tot);
+		System.out.println("\n" + tmp + " - Superficie totale : " + tot);
 	}
 }
