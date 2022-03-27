@@ -156,7 +156,7 @@ public class Sommet implements Comparable<Sommet>{
 		String voisins = "";
 		Iterator<Sommet> it = voisin.iterator();
 		while(it.hasNext()) {
-			voisins = voisins + " " + it.next().getNom();
+			voisins = voisins + " [" + it.next().getNom() + "] ";
 		}
 		return "Sommet [ " + getNom() + ", " + getSuperficie() + "," + voisins + "]";
 	}

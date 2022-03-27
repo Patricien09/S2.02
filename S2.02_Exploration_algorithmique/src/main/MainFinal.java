@@ -22,7 +22,7 @@ public class MainFinal {
         
         if(args.length == 0)
         {
-            System.out.println("Usage: java MainFinal fichier.csv");
+            System.out.println("Usage: java main.MainFinal fichier.csv");
             System.exit(0);
         }
 		System.out.println(args[0]);
@@ -58,7 +58,11 @@ public class MainFinal {
             e.printStackTrace();
         }
 		
-		System.out.println("\n" + somm + "\n");
+        System.out.println("\n");
+        System.out.println(SLASH+TIRET+"Les Sommets"+TIRET+SLASH);
+        for (Sommet sommet : somm) {
+        	System.out.println(sommet);
+		}
 		
 		//---------------------------------- Les Couleurs ---------------------------------//
 		Couleur c1 = new Couleur("Rouge", 10);
@@ -66,6 +70,7 @@ public class MainFinal {
 		Couleur c3 = new Couleur("Bleu", 2);
 		Couleur c4 = new Couleur("Vert", 1);
 		
+		System.out.println("\n");
 		System.out.println(SLASH+TIRET+"Les Couleurs"+TIRET+SLASH);
 		System.out.println(c1);
 		System.out.println(c2);
@@ -84,13 +89,14 @@ public class MainFinal {
 		Graphe graphe = new Graphe(somm, couleurs);
 		
 		System.out.println(SLASH+TIRET+"Graphe"+TIRET+SLASH);
-		System.out.println("Graphe non trie");
+		System.out.println(TIRET+"Graphe non trie"+TIRET);
 		System.out.println(graphe);
 		
-		System.out.println("Graphe trie");
+		System.out.println(TIRET+"Graphe trie"+TIRET);
 		Collections.sort(somm);
 		System.out.println(graphe);
-
+		
+		System.out.println(TIRET+"Coloration - Welsh Powell"+TIRET);
 		graphe.algoWelshPowell();
 	}
 

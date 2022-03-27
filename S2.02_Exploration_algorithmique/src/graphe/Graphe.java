@@ -167,7 +167,7 @@ public class Graphe {
         //On trie la liste selon la superficie totale par couleur attribue
 		Collections.sort(listeDesEntrees, superficieComparator.reversed());
         //On attribue a chaque sommet une couleur optimale, c'est-a-dire du plus petit prix au plus grand
-        System.out.println("\nCouleur attribue a chaque sommet:");
+        System.out.println("\nCouleur attribue a chaque sommet:\n");
         Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
         Iterator<Entry<Couleur, ArrayList<Sommet>>> it = listeDesEntrees.iterator();
         i = 0;
@@ -182,7 +182,7 @@ public class Graphe {
         Collections.sort(sommets, (s1,s2)-> s1.getNom().compareTo(s2.getNom())); //trie nom sommet croissant
         //Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom())); //trie nom couleur croissant
         Collections.sort(sommets, (s1,s2)-> s1.getCouleur().compareTo(s2.getCouleur())); //trie prix couleur decroissant
-		double tot = 0;
+		Double tot = 0.;
 		Couleur tmp = sommets.get(0).getCouleur();
 		for (Sommet sommet : sommets) {
 			if (!(sommet.getCouleur().equals(tmp))){
