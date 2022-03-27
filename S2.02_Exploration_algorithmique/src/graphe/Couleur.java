@@ -17,10 +17,10 @@ public class Couleur implements Comparable<Couleur>{
 	 */
 	public Couleur(String nom, double prix) {
 		if(nom == null || nom.trim().isEmpty()) { 
-			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
+			throw new IllegalArgumentException("Le nom de la couleur ne peut pas etre vide");
 		}
 		if (prix < 0) {
-			throw new IllegalArgumentException("Le prix de la couleur ne peut pas être négative");
+			throw new IllegalArgumentException("Le prix de la couleur ne peut pas etre negatif");
 		}
 		this.nom = nom;
 		this.prix = prix;
@@ -45,7 +45,7 @@ public class Couleur implements Comparable<Couleur>{
 	 */
 	public void setNom(String nom) {
 		if(nom == null || nom.trim().isEmpty()) { 
-			throw new IllegalArgumentException("Le nom de la couleur ne peut pas être vide");
+			throw new IllegalArgumentException("Le nom de la couleur ne peut pas etre vide");
 		}
 		this.nom = nom;
 	}
@@ -62,7 +62,7 @@ public class Couleur implements Comparable<Couleur>{
 	 */
 	public void setPrix(double prix) {
 		if (prix < 0) {
-			throw new IllegalArgumentException("Le prix de la couleur ne peut pas être négative");
+			throw new IllegalArgumentException("Le prix de la couleur ne peut pas etre negatif");
 		}
 		this.prix = prix;
 	}
@@ -84,5 +84,12 @@ public class Couleur implements Comparable<Couleur>{
 	@Override
 	public int compareTo(Couleur c) {
 		return this.getPrix() > c.getPrix() ? 1 : this.getPrix() < c.getPrix() ? -1 : 0;
+	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		if (!(arg0 instanceof Couleur)) return false;
+		Couleur argCouleur = (Couleur) arg0;
+		return (this.getNom().equals(argCouleur.getNom()));
 	}
 }
