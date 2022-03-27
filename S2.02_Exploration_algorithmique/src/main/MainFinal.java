@@ -17,7 +17,12 @@ public class MainFinal {
 		//---------------------------------- Les Sommets ---------------------------------//
 		String line = "";
         String splitBy = ",";
-
+        
+        if(args.length == 0)
+        {
+            System.out.println("Usage: java MainFinal fichier.csv");
+            System.exit(0);
+        }
 		System.out.println(args[0]);
 
         ArrayList<Sommet> somm = new ArrayList<>();
