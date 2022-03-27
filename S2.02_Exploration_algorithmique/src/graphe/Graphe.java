@@ -41,7 +41,7 @@ public class Graphe {
 	}
 	/**
 	 * Verifie si le graphe est vide ou non
-	 * @return boolean Renvoie vrai si graohe vide, faux sinon
+	 * @return boolean Renvoie vrai si graphe vide, faux sinon
 	 */
 	public boolean isEmpty() {
 		if (this.getSommets() == null) {
@@ -107,25 +107,25 @@ public class Graphe {
 		ArrayList<Sommet> listeSommetNonTraite = new ArrayList<>(graphe.getSommets());
 		HashMap<Couleur, ArrayList<Sommet>> hashMapCouleurSommets = new HashMap<>();
 		
-		//Algo de WP, on veut juste attribuer des couleurs à des sommets - Nombre chromatique minimal 
+		//Algo de WP, on veut juste attribuer des couleurs a des sommets - Nombre chromatique minimal 
 		//on ne se contente pas du prix des couleurs
 		int i = 0;
 		while (!listeSommetNonTraite.isEmpty()) {
 			ArrayList<Sommet> listeSommetColorie = new ArrayList<>();
-			ArrayList<Sommet> succ = new ArrayList<>(listeSommetNonTraite.get(0).getVoisin()); //Liste de tous les successeurs du premier sommet non traité
+			ArrayList<Sommet> succ = new ArrayList<>(listeSommetNonTraite.get(0).getVoisin()); //Liste de tous les successeurs du premier sommet non traite
 			for (Sommet s: listeSommetNonTraite) {
 				if(!succ.contains(s)) {
 					if (i >= couleurs.size()) {
-						System.out.println("Pas assez de couleurs différents pour colorier tous les sommets");
+						System.out.println("Pas assez de couleurs diffï¿½rents pour colorier tous les sommets");
 						return;
 					}
 					listeSommetColorie.add(s);
-					succ.addAll(s.getVoisin()); // ensemble succ Union ensemble des successeurs du sommet traité
+					succ.addAll(s.getVoisin()); // ensemble succ Union ensemble des successeurs du sommet traite
 					s.setCouleur(new Couleur(couleurs.get(i))); //On colorie le sommet
 					hashMapCouleurSommets.put(couleurs.get(i), listeSommetColorie);
 				}
 			}
-			listeSommetNonTraite.removeAll(listeSommetColorie); // on enlève tous les sommets portant une couleur de la liste des sommets à traiter
+			listeSommetNonTraite.removeAll(listeSommetColorie); // on enleve tous les sommets portant une couleur de la liste des sommets a traiter
 			i++;
 		}
 		
@@ -146,7 +146,7 @@ public class Graphe {
 		//Tout d'abord, on convertit le hashmap en Liste pour pouvoir les trier
 		//On regroupe d'abord chaque <K,V> dans un set, puis on les ajoute dans une Liste
 		List<Entry<Couleur, ArrayList<Sommet>>> listeDesEntrees = new ArrayList<>(hashMapCouleurSommets.entrySet()); 
-		//Comparator anonyme pour comparé la superficie totale par couleur attribué
+		//Comparator anonyme pour comparer la superficie totale par couleur attribue
 		Comparator<Entry<Couleur, ArrayList<Sommet>>> superficieComparator = new Comparator<>() {  
             @Override
             public int compare(Entry<Couleur, ArrayList<Sommet>> e1, Entry<Couleur, ArrayList<Sommet>> e2) {
@@ -163,10 +163,10 @@ public class Graphe {
                 return sommeV1.compareTo(sommeV2);
             }
         };
-        //On trie la liste selon la superficie totale par couleur attribué
+        //On trie la liste selon la superficie totale par couleur attribue
 		Collections.sort(listeDesEntrees, superficieComparator.reversed());
-        // On attribue a chaque sommet une couleur optimale, c'est-à-dire du plus petit prix au plus grand
-        System.out.println("\nCouleur attribué à chaque sommet:");
+        //On attribue a chaque sommet une couleur optimale, c'est-a-dire du plus petit prix au plus grand
+        System.out.println("\nCouleur attribue a chaque sommet:");
         Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
         Iterator<Entry<Couleur, ArrayList<Sommet>>> it = listeDesEntrees.iterator();
         i = 0;
@@ -176,11 +176,21 @@ public class Graphe {
 			}
         	i++;
         }
-        //Pour visualiser le résultat
+
+        //Pour visualiser le resultat
         Collections.sort(sommets, (s1,s2)-> s1.getNom().compareTo(s2.getNom()));
-        //Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));
-        for (Sommet sommet : sommets) {
+        Collections.sort(sommets, (s1,s2)-> s1.getCouleur().getNom().compareTo(s2.getCouleur().getNom()));
+		double tot = 0;
+		Couleur tmp = sommets.get(0).getCouleur();
+		for (Sommet sommet : sommets) {
+			if (!(sommet.getCouleur().equals(tmp))){
+				System.out.println(tmp + " - Superficie totale : " + tot);
+				tot = 0.;
+				tmp = sommet.getCouleur();
+			}
 			System.out.println(sommet.getNom() + " - " + sommet.getCouleur().getNom() + " - " + sommet.getSuperficie() + " - "+ sommet.getCouleur().getPrix()+ " euros");
-		}        
+			tot += sommet.getSuperficie();
+		}
+		System.out.println(tmp + " - Superficie totale : " + tot);
 	}
 }

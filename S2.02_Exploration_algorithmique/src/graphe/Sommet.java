@@ -26,10 +26,10 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public Sommet(String nom, double superficie) throws IllegalArgumentException {
 		if(nom == null || nom.trim().isEmpty()) { 
-			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
+			throw new IllegalArgumentException("Le nom du sommet ne peut pas etre vide");
 		}
 		if (superficie < 0) {
-			throw new IllegalArgumentException("La superficie ne peut pas être négative");
+			throw new IllegalArgumentException("La superficie ne peut pas etre negative");
 		}
 		this.nom = nom;
 		this.superficie = (Double) superficie;
@@ -59,7 +59,7 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public void setNom(String nom) {
 		if(nom == null || nom.trim().isEmpty()) { 
-			throw new IllegalArgumentException("Le nom du sommet ne peut pas être vide");
+			throw new IllegalArgumentException("Le nom du sommet ne peut pas etre vide");
 		}
 		this.nom = nom;
 	}
@@ -78,7 +78,7 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public void setSuperficie(double superficie) {
 		if (superficie < 0) {
-			throw new IllegalArgumentException("La superficie ne peut pas être négative");
+			throw new IllegalArgumentException("La superficie ne peut pas etre negative");
 		}
 		this.superficie = (Double) superficie;
 	}
@@ -120,7 +120,7 @@ public class Sommet implements Comparable<Sommet>{
 	 */
 	public void setCouleur(Couleur couleur) {
 		if (couleur == null) {
-			throw new IllegalArgumentException("La couleur ne peut pas être null");
+			throw new IllegalArgumentException("La couleur ne peut pas etre null");
 		}
 		this.couleur = couleur;
 	}
