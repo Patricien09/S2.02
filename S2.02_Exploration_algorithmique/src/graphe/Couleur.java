@@ -10,13 +10,13 @@ public class Couleur implements Comparable<Couleur>{
 	private String nom;
 	/** Le prix de la couleur */
 	private double prix;
-	
+
 	/** Declare une couleur grace a son nom et a son prix
 	 * @param nom Le nom de la couleur
 	 * @param prix Le prix de la couleur
 	 */
 	public Couleur(String nom, double prix) {
-		if(nom == null || nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) {
 			throw new IllegalArgumentException("Le nom de la couleur ne peut pas etre vide");
 		}
 		if (prix < 0) {
@@ -44,7 +44,7 @@ public class Couleur implements Comparable<Couleur>{
 	 * @param nom le nouveau nom
 	 */
 	public void setNom(String nom) {
-		if(nom == null || nom.trim().isEmpty()) { 
+		if(nom == null || nom.trim().isEmpty()) {
 			throw new IllegalArgumentException("Le nom de la couleur ne peut pas etre vide");
 		}
 		this.nom = nom;
@@ -66,8 +66,8 @@ public class Couleur implements Comparable<Couleur>{
 		}
 		this.prix = prix;
 	}
-	
-	
+
+
 	/** Convertit la couleur en chaine de caractere
 	 * C'est-a-dire son nom puis son prix en euros pour une unite de superficie
 	 */
