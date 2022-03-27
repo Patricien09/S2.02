@@ -14,6 +14,8 @@ public class MainFinal {
 	private final static String SLASH = "//";
 
 	public static void main(String[] args) {
+		//--------- Mettre le nom du fichier csv apres la commande "java MainFinal" --------//
+		//----------------- Exemple "java main/MainFinal main/France.csv" -----------------//
 		//---------------------------------- Les Sommets ---------------------------------//
 		String line = "";
         String splitBy = ",";
