@@ -104,8 +104,7 @@ public class MainFrance {
 		System.out.println("Graphe trie");
 		Collections.sort(sommets);
 		System.out.println(graphe);
-		
-		// 1 et 5 : Vert , 2 : Orange , 3 et 4 : Bleu
+
 		graphe.algoWelshPowell();
 	}
 
