@@ -5,7 +5,7 @@
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
     <packagedElement xmi:type="uml:Class" xmi:id="_ScmcAKOqEeyVIOD3z4xUGA" name="Sommet">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_cY67MKOqEeyVIOD3z4xUGA" name="nom" visibility="private">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cY67MKOqEeyVIOD3z4xUGA" name="nom" visibility="private" aggregation="composite">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_xRFc4KOqEeyVIOD3z4xUGA" name="superficie" visibility="private">
@@ -20,6 +20,10 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VF1yUKOuEeyVIOD3z4xUGA" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_diE5QK06Eey6DLh-IKCPPg" type="_p3fxcKOwEeyVIOD3z4xUGA" aggregation="shared" association="_dh_ZsK06Eey6DLh-IKCPPg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_e-PdULEAEeyAROOJJjraYg" name="voisin" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nFregLEAEeyAROOJJjraYg" name="couleur" visibility="private" type="_p3fxcKOwEeyVIOD3z4xUGA"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_qrsdQKOqEeyVIOD3z4xUGA" name="getNom">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_i5jdAKOyEeyVIOD3z4xUGA" direction="out">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -37,6 +41,9 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_1CT5gKOvEeyVIOD3z4xUGA" name="voisin">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
         </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NfAw4LEBEeyAROOJJjraYg" name="superficie">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_XnsjsKOxEeyVIOD3z4xUGA" name="setNom"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ge84QKOxEeyVIOD3z4xUGA" name="setSuperficie"/>
@@ -50,6 +57,33 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_08yYQLEAEeyAROOJJjraYg" name="Sommet">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_DRhpMLEBEeyAROOJJjraYg" name="nom">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_G6ukgLEBEeyAROOJJjraYg" name="superficie">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_RxbBQLEBEeyAROOJJjraYg" name="getVoisin">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YDeOILEBEeyAROOJJjraYg" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_av-3sLEBEeyAROOJJjraYg" name="setVoisin"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_d5C6YLEBEeyAROOJJjraYg" name="getCouleur" visibility="public" concurrency="concurrent">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gc4wILEBEeyAROOJJjraYg" type="_p3fxcKOwEeyVIOD3z4xUGA" direction="out"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gyfzwLEBEeyAROOJJjraYg" name="setCouleur"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sWpMYLEBEeyAROOJJjraYg" name="addLienVoisin">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_wg3KELEBEeyAROOJJjraYg" type="_ScmcAKOqEeyVIOD3z4xUGA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ygPA0LEBEeyAROOJJjraYg" name="compareTo">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1CW_ULEBEeyAROOJJjraYg" type="_ScmcAKOqEeyVIOD3z4xUGA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_2hXT8LEBEeyAROOJJjraYg" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_5VtvwKOsEeyVIOD3z4xUGA" name="Graphe">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_9b2esKOsEeyVIOD3z4xUGA" type="_ScmcAKOqEeyVIOD3z4xUGA" aggregation="shared" association="_9b0CcKOsEeyVIOD3z4xUGA">
@@ -58,6 +92,14 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_0SMbEa06Eey6DLh-IKCPPg" type="_p3fxcKOwEeyVIOD3z4xUGA" association="_0SKl4K06Eey6DLh-IKCPPg">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0SNpMa06Eey6DLh-IKCPPg" value="*"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_lzfL8LECEeyAROOJJjraYg" name="sommet" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pXfeMLECEeyAROOJJjraYg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pW-g0LECEeyAROOJJjraYg" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_0ozaYLECEeyAROOJJjraYg" name="couleurs" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_r0kssKOxEeyVIOD3z4xUGA" name="algoWelshPowell"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_wxf5sKOxEeyVIOD3z4xUGA" name="Graphe">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_-2e3YKOxEeyVIOD3z4xUGA" name="listeSommets" type="_ScmcAKOqEeyVIOD3z4xUGA"/>
@@ -65,6 +107,15 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_6tzCsLECEeyAROOJJjraYg" name="Graphe">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="__RBWQLECEeyAROOJJjraYg" type="_5VtvwKOsEeyVIOD3z4xUGA"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ak4K0LEDEeyAROOJJjraYg" name="isEmpty">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_D3wQ0LEDEeyAROOJJjraYg" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_E_t-cLEDEeyAROOJJjraYg" name="toString"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_9b0CcKOsEeyVIOD3z4xUGA" name="contient" visibility="protected" memberEnd="_9b2esKOsEeyVIOD3z4xUGA _9cA2wKOsEeyVIOD3z4xUGA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9b13oKOsEeyVIOD3z4xUGA" source="org.eclipse.papyrus">
@@ -97,6 +148,26 @@
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_UZPqsKOxEeyVIOD3z4xUGA" name="setNom"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_VNqxQKOxEeyVIOD3z4xUGA" name="set Prix"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_FaUFMLECEeyAROOJJjraYg" name="toString" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_IzzJgLECEeyAROOJJjraYg" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_OsyWILECEeyAROOJJjraYg" name="Couleur">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_S4EDwLECEeyAROOJJjraYg">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TtvukLECEeyAROOJJjraYg">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VF50ULECEeyAROOJJjraYg" name="compareTo">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YiDLELECEeyAROOJJjraYg" type="_p3fxcKOwEeyVIOD3z4xUGA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_aEWEQLECEeyAROOJJjraYg" direction="out">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_agueQLECEeyAROOJJjraYg" name="equals"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_dh_ZsK06Eey6DLh-IKCPPg" memberEnd="_diE5QK06Eey6DLh-IKCPPg _diGucK06Eey6DLh-IKCPPg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_diDEEK06Eey6DLh-IKCPPg" source="org.eclipse.papyrus">

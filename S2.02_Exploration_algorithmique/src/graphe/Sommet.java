@@ -138,16 +138,6 @@ public class Sommet implements Comparable<Sommet>{
 		}
 	}
 
-	/** Ajoute un lien (arete) entre ce sommet et chaque sommet de la liste en parametre
-	 * @param v la liste des tous les nouveaux voisins du sommet
-	 */
-	public void addLienVoisin(ArrayList<Sommet> v) {
-		Iterator<Sommet> it = v.iterator();
-		while (it.hasNext()) {
-			addLienVoisin(it.next());
-		}
-	}
-
 	/** Convertit le sommet en chaine de caractere
 	 * au format Sommet [ nom, superficie, voisins]
 	 */
@@ -159,16 +149,6 @@ public class Sommet implements Comparable<Sommet>{
 			voisins = voisins + " [" + it.next().getNom() + "] ";
 		}
 		return "Sommet [ " + getNom() + ", " + getSuperficie() + "," + voisins + "]";
-	}
-
-	/** Teste l'egalite entre ce sommet et un autre objet
-	 * Renvoie true si les objets sont les memes
-	 * Renvoie false si les objets sont differents
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if(!(obj instanceof Sommet)) return false;
-		return (((Sommet) obj).getNom().equals(nom)) && ((Sommet) obj).getVoisin().equals(voisin);
 	}
 
 	/** Compare deux sommets en fonction de leur degre
