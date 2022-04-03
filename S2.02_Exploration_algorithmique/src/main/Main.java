@@ -27,6 +27,7 @@ public class Main {
         if(args.length == 0)
         {
             System.out.println("Usage: java main.MainFinal fichier.csv");
+            System.out.println("Exemple: java main.MainFinal ./src/test/France.csv");
             System.exit(0);
         }
 
@@ -37,7 +38,7 @@ public class Main {
 
             while ((line = br.readLine())!= null){
                 String[] read = line.split(splitBy);
-                Sommet tmp = new Sommet(read[1], Integer.parseInt(read[2]));
+                Sommet tmp = new Sommet(read[1], Double.parseDouble(read[2]));
                 somm.add(tmp);
             }
             br.close();
@@ -70,6 +71,7 @@ public class Main {
 		}
 		
 		//---------------------------------- Les Couleurs ---------------------------------//
+        //theoreme des quatre couleurs
 		Couleur c1 = new Couleur("Rouge", 10);
 		Couleur c2 = new Couleur("Orange", 5);
 		Couleur c3 = new Couleur("Bleu", 2);

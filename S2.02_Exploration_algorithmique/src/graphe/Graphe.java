@@ -14,16 +14,12 @@ import java.util.Map.Entry;
  * Definition d'un graphe
  */
 public class Graphe {
-	/**
-	 * Liste de tous les sommets
-	 */
+	/** Liste de tous les sommets */
 	private ArrayList<Sommet> sommets;
-	/**
-	 * Liste des couleurs
-	 */
+	/** Liste des couleurs */
 	private ArrayList<Couleur> couleurs;
 
-	/** Declare un graphe grace a une liste de sommet et une liste de couleur
+	/** Construit un graphe grace a une liste de sommet et une liste de couleur
 	 * @param sommets Liste des sommets
 	 * @param couleurs Liste des couleurs
 	 */
@@ -41,7 +37,7 @@ public class Graphe {
 	}
 	/**
 	 * Verifie si le graphe est vide ou non
-	 * @return boolean Renvoie vrai si graphe vide, faux sinon
+	 * @return Renvoie vrai si graphe vide, faux sinon
 	 */
 	public boolean isEmpty() {
 		if (this.getSommets() == null) {
@@ -79,7 +75,7 @@ public class Graphe {
 	}
 
 	/** Convertit un graphe en chaine de caractere
-	 * C'est-a-dire le nom de chaque sommet du graphe suvi par tous ses voisins
+	 * @return Chaine de caractere au format: le nom de chaque sommet du graphe suvi par tous ses voisins
 	 */
 	@Override
 	public String toString() {
@@ -104,7 +100,6 @@ public class Graphe {
 		if(this.isEmpty()) return;
 		Graphe graphe = new Graphe(this); //copie graphe avant trie
 		Collections.sort(graphe.getSommets()); //trie les sommets selon l'ordre decroissant du degre
-		Collections.sort(this.getCouleurs()); //trie les couleurs selon l'ordre decroissant du prix
 		ArrayList<Sommet> listeSommetNonTraite = new ArrayList<>(graphe.getSommets());
 		HashMap<Couleur, ArrayList<Sommet>> hashMapCouleurSommets = new HashMap<>();
 

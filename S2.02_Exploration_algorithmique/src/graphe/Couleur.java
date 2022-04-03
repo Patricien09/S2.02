@@ -85,7 +85,11 @@ public class Couleur implements Comparable<Couleur>{
 	public int compareTo(Couleur c) {
 		return this.getPrix() > c.getPrix() ? 1 : this.getPrix() < c.getPrix() ? -1 : 0;
 	}
-
+	
+	/** Compare deux couleurs pour egalite par nom
+	 * @param arg0 Objet java
+	 * @return Renvoie vrai si la couleur en parametre est egal à celle-ci, faux sinon
+	 */
 	@Override
 	public boolean equals(Object arg0) {
 		if (!(arg0 instanceof Couleur)) return false;
